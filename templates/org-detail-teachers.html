@@ -1,0 +1,36 @@
+{% extends 'org_base.html' %}
+{% block title %}点灯网教师列表 - 点灯网{% endblock %}
+{% block page_path%}教师介绍{% endblock %}
+{% block right_form %}
+
+    <div class="right companycenter layout" >
+        <div class="head">
+            <h1>机构教师</h1>
+            <a class="green fr more" href="org-detail-teachers.html">查看更多  >  </a>
+        </div>
+
+        {% for teacher in all_teachers %}
+            <div class="diarys">
+                <div class="module5 share company-diary-box" style="padding:10px 0;">
+                    <div class="left">
+                        <img class="pic" src="{{ MEDIA_URL }}{{ teacher.image }}"/>
+                        <p>昵称：{{ teacher.name }}</p>
+                    </div>
+                    <div class="right">
+                        <div class="top">
+                            <div class="fl">
+                                <a href="{% url 'course:course_detail' teacher.get_course_names.id %}"><h1>{{ teacher.get_course_names }}</h1></a>
+                                <span>发表于：{{ teacher.get_course_names.add_time }}</span>
+                            </div>
+                        </div>
+                        <div class="middle" style="border-bottom:0;">课程介绍<br/>{{ teacher.get_course_names.desc }}</div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+
+    </div>
+
+{% endblock %}
